@@ -1,7 +1,7 @@
 # build/dist step automation for membrane
 
 S3PYPI_BUCKET			=	pypi1.bright.md
-S3PYPI_SECRET			=	$(shell aws secretsmanager --query SecretString get-secret-value --secret-id /dev/pypi.bright.md/url-secret | jq -r 'fromjson | .secret')
+S3PYPI_SECRET			=	$(shell aws secretsmanager --query SecretString get-secret-value --secret-id /dev/pypi1.bright.md/url-secret | jq -r 'fromjson | .secret')
 ifeq ($(strip $(S3PYPI_SECRET)),)
 $(error S3PYPI_SECRET unset)
 endif
